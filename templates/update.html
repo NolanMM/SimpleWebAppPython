@@ -1,0 +1,28 @@
+{%extends 'base.html'%}
+
+{%block head%}
+    <Title>Testing Base</Title>
+{%endblock%}
+
+{%block body%}
+<div class="container">
+    <div class="container">
+        <h1>Welcome to Simple HTML Template</h1>
+        <p>This is a simple HTML template.</p>
+        <p>You can modify it as per your requirements.</p>
+    </div>
+
+    <h1>Update Task</h1>
+
+    <div class="container" align="center">
+        <h2>Update Task</h2>
+        <p>Update the task id: {{task.id}}.</p>
+        <p>Current task: {{task.content}}</p>
+        <p>Added on: {{task.date_created}}</p>
+        <form action="/update/{{task.id}}" method="POST">
+            <input type="text" name="content" id="content" placeholder="{{task.content}}">
+            <input type="submit" value="Update Task">
+        </form>
+    </div>
+</div>
+{%endblock%}
