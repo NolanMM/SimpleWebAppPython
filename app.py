@@ -2,6 +2,7 @@ from datetime import datetime
 from flask import Flask, request, jsonify, render_template, url_for, redirect
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug import Response
+from PysparkModule import PysparkModule
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
@@ -33,7 +34,12 @@ def index() -> Response | str:
     else:
         tasks = Todo.query.order_by(Todo.date_created).all()
         return render_template('index.html', tasks=tasks)
-
+    # Try the PysparkModule
+    # pyspark_module = PysparkModule()
+    # df = pyspark_module.read_csv('iris_2D.csv')
+    # # Print the table to the page as string
+    # df_first_row_first_column = df.first()[0]
+    # return str(df_first_row_first_column)
 
 @app.route('/delete/<int:task_id>')
 def delete(task_id: int) -> Response | str:
